@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% set active_nav = 'gifts' %}
+
+{% block content %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            {% for col in col_mapping %}
+              {% if not col.get('hidden') %}
+                <th scope="col" class="{{ 'text-end' if col.get('align') == 'right' }}">{{ col.get('label')|e }}</th>
+              {% endif %}
+            {% endfor %}
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product_row in product_list %}
+            <tr class="">
+              {% for col in col_mapping %}
+                {% if not col.get('hidden') %}
+                  <td class="{{ 'text-end' if col.get('align') == 'right' }} {{ 'text-muted' if product_row.get('in_stock_quantity') == 0 }}">{{ product_row.get(col.get('name'))|e }}</td>
+                {% endif %}
+              {% endfor %}
+              <td>
+              {% if product_row.get('in_stock_quantity') > 0 %}
+                <a class="btn btn-success" role="button" href="/tobasket/{{ product_row.get('id') }}">Add</a>
+              {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

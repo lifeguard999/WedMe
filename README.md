@@ -7,10 +7,10 @@ Usage examples
 * Run the server:
 ```bash
     $ export PYTHONPATH=<project path>/src
-    $ python ./src/web/app.py
+    $ cd <project path>
+    $ python3 ./src/web/app.py
 ```
-
-Go to web:
+* URL will show in console output: http://localhost:8080/
 
 
 Installation

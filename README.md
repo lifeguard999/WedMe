@@ -6,6 +6,7 @@ Usage examples
 
 * Run the server:
 ```bash
+    $ export PYTHONPATH=<project path>/src
     $ python ./src/web/app.py
 ```
 
